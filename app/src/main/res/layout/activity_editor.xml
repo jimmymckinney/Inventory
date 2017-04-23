@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".EditorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_margin">
+
+        <ImageView
+            android:id="@+id/edit_product_picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:src="@drawable/ic_photo_black_24dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewDescription"
+                android:text="Product Name: "
+                android:textColor="@color/colorAccent" />
+
+            <EditText
+                android:id="@+id/edit_product_name"
+                style="@style/EditorFieldStyle"
+                android:hint="Enter Product Name"
+                android:inputType="textCapWords" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewDescription"
+                android:text="Product Supplier: "
+                android:textColor="@color/colorAccent" />
+
+            <EditText
+                android:id="@+id/edit_product_supplier"
+                style="@style/EditorFieldStyle"
+                android:hint="Enter Supplier Name"
+                android:inputType="textCapWords" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewDescription"
+                android:text="Product Price: "
+                android:textColor="@color/colorAccent" />
+
+            <!-- Price field -->
+            <EditText
+                android:id="@+id/edit_product_price"
+                style="@style/EditorFieldStyle"
+                android:hint="Enter Price in USD"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewDescription"
+                android:text="Product Quantity: "
+                android:textColor="@color/colorAccent" />
+
+            <!-- Quantity field -->
+            <EditText
+                android:id="@+id/edit_product_quantity"
+                style="@style/EditorFieldStyle"
+                android:hint="Enter Quantity"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextViewDescription"
+                android:text="Items Sold: "
+                android:textColor="@color/colorAccent" />
+
+            <!-- Quantity field -->
+            <EditText
+                android:id="@+id/edit_product_sales"
+                style="@style/EditorFieldStyle"
+                android:hint="Enter # of Sales"
+                android:inputType="number" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
