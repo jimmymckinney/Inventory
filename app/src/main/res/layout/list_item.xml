@@ -28,8 +28,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/product_name"
@@ -54,9 +54,9 @@
                 android:id="@+id/sell_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:background="@drawable/rounded_corner"
                 android:clickable="true"
-                android:layout_gravity="center_vertical"
                 android:foreground="?attr/selectableItemBackground"
                 android:paddingBottom="4dp"
                 android:paddingLeft="8dp"
@@ -76,8 +76,8 @@
                 android:id="@+id/product_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="4dp"
+                android:layout_weight="1"
                 android:fontFamily="sans-serif"
                 android:textAppearance="?android:textAppearanceSmall"
                 tools:text="Price: $45" />
@@ -95,8 +95,8 @@
                 android:id="@+id/product_sales"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="4dp"
+                android:layout_weight="1"
                 android:fontFamily="sans-serif"
                 android:textAppearance="?android:textAppearanceSmall"
                 tools:text="Sold: 12" />

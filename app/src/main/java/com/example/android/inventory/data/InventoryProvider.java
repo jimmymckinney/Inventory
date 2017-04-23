@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
+
 import com.example.android.inventory.data.InventoryContract.InventoryEntry;
 
 /**
@@ -15,11 +16,16 @@ import com.example.android.inventory.data.InventoryContract.InventoryEntry;
  */
 public class InventoryProvider extends ContentProvider {
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     public static final String LOG_TAG = InventoryProvider.class.getSimpleName();
 
-    /** Database helper object **/
+    /**
+     * Database helper object
+     **/
     private InventoryDbHelper mDbHelper;
+
     /**
      * Initialize the provider and the database helper object.
      */
@@ -62,7 +68,7 @@ public class InventoryProvider extends ContentProvider {
                 // arguments that will fill in the "?". Since we have 1 question mark in the
                 // selection, we have 1 String in the selection arguments' String array.
                 selection = InventoryEntry._ID + "=?";
-                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
 
                 // This will perform a query on the inventory table where the _id equals 3 to return a
                 // Cursor containing that row of the table.
@@ -155,7 +161,7 @@ public class InventoryProvider extends ContentProvider {
                 // so we know which row to update. Selection will be "_id=?" and selection
                 // arguments will be a String array containing the actual ID.
                 selection = InventoryEntry._ID + "=?";
-                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                 return updateProduct(uri, contentValues, selection, selectionArgs);
             default:
                 throw new IllegalArgumentException("Update is not supported for " + uri);
@@ -169,33 +175,6 @@ public class InventoryProvider extends ContentProvider {
      * Return the number of rows that were successfully updated.
      */
     private int updateProduct(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-
-        //Check that the name is not null
-        /*String name = values.getAsString(InventoryEntry.COLUMN_PRODUCT_NAME);
-        if (name == null) {
-            throw new IllegalArgumentException("Product requires a name");
-        }
-        //Check that product quantity is not null and has a valid gender
-        Integer productQuantity = values.getAsInteger(InventoryEntry.COLUMN_PRODUCT_QUANTITY);
-        if (productQuantity != null && productQuantity < 0) {
-            Log.v("productQuantity", "productQuantity:" + productQuantity);
-            throw new IllegalArgumentException("Product requires a valid quantity");
-        }
-        //Check that product price is either null or has a value >= 0
-        Integer productPrice = values.getAsInteger(InventoryEntry.COLUMN_PRODUCT_PRICE);
-        if (productPrice != null && productPrice < 0) {
-            throw new IllegalArgumentException("Product requires a valid price");
-        }
-        //Check that number of sales is either null or has a value >= 0
-        Integer productSales = values.getAsInteger(InventoryEntry.COLUMN_PRODUCT_SALES);
-        if (productSales != null && productSales < 0) {
-            throw new IllegalArgumentException("Product requires a valid number of sales");
-        }
-
-        String productPicture = values.getAsString(InventoryEntry.COLUMN_PRODUCT_PICTURE);
-        if (productPicture == null) {
-            throw new IllegalArgumentException("Product requires a photo");
-        }*/
 
         //If there are no values to update, then don't try to update the database
         if (values.size() == 0) {
@@ -234,17 +213,19 @@ public class InventoryProvider extends ContentProvider {
                 // If 1 or more rows were deleted, then notify all listeners that the data at the
                 // given URI has changed
                 if (rowsDeleted != 0) {
-                    getContext().getContentResolver().notifyChange(uri, null);}
+                    getContext().getContentResolver().notifyChange(uri, null);
+                }
                 return rowsDeleted;
             case PRODUCT_ID:
                 // Delete a single row given by the ID in the URI
                 selection = InventoryEntry._ID + "=?";
-                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                 rowsDeleted = database.delete(InventoryEntry.TABLE_NAME, selection, selectionArgs);
                 // If 1 or more rows were deleted, then notify all listeners that the data at the
                 // given URI has changed
                 if (rowsDeleted != 0) {
-                    getContext().getContentResolver().notifyChange(uri, null);}
+                    getContext().getContentResolver().notifyChange(uri, null);
+                }
                 return rowsDeleted;
             default:
                 throw new IllegalArgumentException("Deletion is not supported for " + uri);
@@ -267,10 +248,14 @@ public class InventoryProvider extends ContentProvider {
         }
     }
 
-    /** URI matcher code for the content URI for the inventory table */
+    /**
+     * URI matcher code for the content URI for the inventory table
+     */
     private static final int PRODUCT = 100;
 
-    /** URI matcher code for the content URI for a single product in the inventory table */
+    /**
+     * URI matcher code for the content URI for a single product in the inventory table
+     */
     private static final int PRODUCT_ID = 101;
 
     /**

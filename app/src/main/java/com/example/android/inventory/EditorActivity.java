@@ -32,12 +32,16 @@ import com.squareup.picasso.Picasso;
  */
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    /** Identifier for the inventory data loader */
+    /**
+     * Identifier for the inventory data loader
+     */
     private static final int EXISTING_PRODUCT_LOADER = 0;
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    /** Content URI for the existing product (null if it's a new product) */
+    /**
+     * Content URI for the existing product (null if it's a new product)
+     */
     private Uri mCurrentProductUri;
 
     private boolean mProductHasChanged = false;
@@ -179,7 +183,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         if (mCurrentProductUri == null &&
                 TextUtils.isEmpty(productNameString) && TextUtils.isEmpty(productQuantityString) &&
                 TextUtils.isEmpty(productPriceString) && TextUtils.isEmpty(productSupplierString) &&
-                TextUtils.isEmpty(productSalesString) && TextUtils.isEmpty(mImageUriString)) {return;}
+                TextUtils.isEmpty(productSalesString) && TextUtils.isEmpty(mImageUriString)) {
+            return;
+        }
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
