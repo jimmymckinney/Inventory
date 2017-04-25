@@ -57,4 +57,17 @@
 
     <!-- Toast message in editor when current product is out of stock (equal to 0) [CHAR LIMIT=NONE] -->
     <string name="no_more_stock">Product out of stock.</string>
+
+    <string name="currency_sign">$</string>
+    <string name="editor_activity_product_name_label">Product Name: </string>
+    <string name="editor_activity_product_supplier_label">Product Supplier: </string>
+    <string name="editor_activity_product_quantity_label">Product Quantity: </string>
+    <string name="editor_activity_product_price_label">Product Price: </string>
+    <string name="editor_activity_product_sales_label">Items Sold: </string>
+
+    <string name="editor_activity_product_name_field">Enter Product Name</string>
+    <string name="editor_activity_product_supplier_field">Enter Supplier Name</string>
+    <string name="editor_activity_product_quantity_field">Enter Quantity</string>
+    <string name="editor_activity_product_price_field">Enter Price in USD</string>
+    <string name="editor_activity_product_sales_field">Enter # of Sales</string>
 </resources>

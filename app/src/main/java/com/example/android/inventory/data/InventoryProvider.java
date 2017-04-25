@@ -11,6 +11,8 @@ import android.util.Log;
 
 import com.example.android.inventory.data.InventoryContract.InventoryEntry;
 
+import java.math.BigDecimal;
+
 /**
  * {@link ContentProvider} for Inventory app.
  */
@@ -118,8 +120,9 @@ public class InventoryProvider extends ContentProvider {
             throw new IllegalArgumentException("Product requires a valid quantity");
         }
         //Check that product price is either null or has a value >= 0
-        Integer productPrice = values.getAsInteger(InventoryEntry.COLUMN_PRODUCT_PRICE);
-        if (productPrice != null && productPrice < 0) {
+        //Integer productPrice = values.getAsInteger(InventoryEntry.COLUMN_PRODUCT_PRICE);
+        BigDecimal productPrice = new BigDecimal(values.getAsString(InventoryEntry.COLUMN_PRODUCT_PRICE));
+        if (productPrice != null && productPrice.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Product requires a valid price");
         }
         //Check that number of sales is either null or has a value >= 0

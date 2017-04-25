@@ -28,13 +28,13 @@
 
             <TextView
                 style="@style/TextViewDescription"
-                android:text="Product Name: "
+                android:text="@string/editor_activity_product_name_label"
                 android:textColor="@color/colorAccent" />
 
             <EditText
                 android:id="@+id/edit_product_name"
                 style="@style/EditorFieldStyle"
-                android:hint="Enter Product Name"
+                android:hint="@string/editor_activity_product_name_field"
                 android:inputType="textCapWords" />
         </LinearLayout>
 
@@ -45,13 +45,13 @@
 
             <TextView
                 style="@style/TextViewDescription"
-                android:text="Product Supplier: "
+                android:text="@string/editor_activity_product_supplier_label"
                 android:textColor="@color/colorAccent" />
 
             <EditText
                 android:id="@+id/edit_product_supplier"
                 style="@style/EditorFieldStyle"
-                android:hint="Enter Supplier Name"
+                android:hint="@string/editor_activity_product_supplier_field"
                 android:inputType="textCapWords" />
         </LinearLayout>
 
@@ -62,15 +62,19 @@
 
             <TextView
                 style="@style/TextViewDescription"
-                android:text="Product Price: "
+                android:text="@string/editor_activity_product_price_label"
                 android:textColor="@color/colorAccent" />
-
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/currency_sign"
+                android:textAppearance="?android:textAppearanceMedium"/>
             <!-- Price field -->
             <EditText
                 android:id="@+id/edit_product_price"
                 style="@style/EditorFieldStyle"
-                android:hint="Enter Price in USD"
-                android:inputType="number" />
+                android:hint="@string/editor_activity_product_price_field"
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
         <LinearLayout
@@ -80,14 +84,14 @@
 
             <TextView
                 style="@style/TextViewDescription"
-                android:text="Product Quantity: "
+                android:text="@string/editor_activity_product_quantity_label"
                 android:textColor="@color/colorAccent" />
 
             <!-- Quantity field -->
             <EditText
                 android:id="@+id/edit_product_quantity"
                 style="@style/EditorFieldStyle"
-                android:hint="Enter Quantity"
+                android:hint="@string/editor_activity_product_quantity_field"
                 android:inputType="number" />
         </LinearLayout>
 
@@ -98,14 +102,14 @@
 
             <TextView
                 style="@style/TextViewDescription"
-                android:text="Items Sold: "
+                android:text="@string/editor_activity_product_sales_label"
                 android:textColor="@color/colorAccent" />
 
             <!-- Quantity field -->
             <EditText
                 android:id="@+id/edit_product_sales"
                 style="@style/EditorFieldStyle"
-                android:hint="Enter # of Sales"
+                android:hint="@string/editor_activity_product_sales_field"
                 android:inputType="number" />
         </LinearLayout>
     </LinearLayout>

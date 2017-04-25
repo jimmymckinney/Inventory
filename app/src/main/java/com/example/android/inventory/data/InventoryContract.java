@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-public class InventoryContract  {
+public class InventoryContract {
 
     private InventoryContract() {
 
@@ -35,7 +35,7 @@ public class InventoryContract  {
         //price, quantity available, supplier, and a picture of the product. It will also need to allow the user to track sales and shipments
 
         public static final String _ID = BaseColumns._ID;
-        public static final String COLUMN_PRODUCT_NAME= "name";
+        public static final String COLUMN_PRODUCT_NAME = "name";
         public static final String COLUMN_PRODUCT_QUANTITY = "quantity";
         public static final String COLUMN_PRODUCT_PRICE = "price";
         public static final String COLUMN_PRODUCT_SUPPLIER = "supplier";

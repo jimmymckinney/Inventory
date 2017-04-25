@@ -89,7 +89,7 @@
                 android:layout_weight="1"
                 android:fontFamily="sans-serif"
                 android:textAppearance="?android:textAppearanceSmall"
-                tools:text="QTY. 40" />
+                tools:text="In-Stock: 40" />
 
             <TextView
                 android:id="@+id/product_sales"
@@ -99,7 +99,7 @@
                 android:layout_weight="1"
                 android:fontFamily="sans-serif"
                 android:textAppearance="?android:textAppearanceSmall"
-                tools:text="Sold: 12" />
+                tools:text="Items Sold: 12" />
         </LinearLayout>
     </LinearLayout>
 

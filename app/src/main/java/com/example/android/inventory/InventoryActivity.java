@@ -69,7 +69,6 @@ public class InventoryActivity extends AppCompatActivity implements LoaderManage
 
         // Initialize loader
         getSupportLoaderManager().initLoader(PRODUCT_LOADER, null, this);
-
     }
 
     private void insertProduct() {
@@ -78,7 +77,7 @@ public class InventoryActivity extends AppCompatActivity implements LoaderManage
 
         values.put(InventoryEntry.COLUMN_PRODUCT_NAME, "Echo Dot");
         values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, 40);
-        values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, 49);
+        values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, "49.99");
         values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER, "Amazon");
         values.put(InventoryEntry.COLUMN_PRODUCT_SALES, 7);
 

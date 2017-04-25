@@ -27,6 +27,10 @@ import com.example.android.inventory.data.InventoryContract.InventoryEntry;
 import com.example.android.inventory.data.InventoryDbHelper;
 import com.squareup.picasso.Picasso;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 /**
  * Allows user to add a new product or edit an existing one.
  */
@@ -169,7 +173,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // integer value. Use 0 by default.
         int productQuantityInt = 0;
         int productSalesInt = 0;
-        int productPriceInt = 0;
+        //int productPriceInt = 0;
+        BigDecimal productPriceBigDecimal = new BigDecimal(0);
+        NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
+
+
         if (!TextUtils.isEmpty(productQuantityString)) {
             productQuantityInt = Integer.parseInt(productQuantityString);
         }
@@ -177,8 +185,12 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             productSalesInt = Integer.parseInt(productSalesString);
         }
         if (!TextUtils.isEmpty(productPriceString)) {
-            productPriceInt = Integer.parseInt(productPriceString);
+            productPriceBigDecimal = new BigDecimal(productPriceString);
         }
+
+        //Get rid of currency sign when storing in String value to make sure that it can be read in
+        // again when changing price
+        String productPrice = n.format(productPriceBigDecimal).replace("$","");
 
         if (mCurrentProductUri == null &&
                 TextUtils.isEmpty(productNameString) && TextUtils.isEmpty(productQuantityString) &&
@@ -191,7 +203,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         ContentValues values = new ContentValues();
         values.put(InventoryEntry.COLUMN_PRODUCT_NAME, productNameString);
         values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, productQuantityInt);
-        values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, productPriceInt);
+        values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, productPrice);
         values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER, productSupplierString);
         values.put(InventoryEntry.COLUMN_PRODUCT_PICTURE, mImageUriString);
         values.put(InventoryEntry.COLUMN_PRODUCT_SALES, productSalesInt);
@@ -201,7 +213,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         if (mCurrentProductUri == null) {
             // Insert a new product into the provider, returning the content URI for the new product.
             mCurrentProductUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
-            // Toast nessage displaying id.
+            // Toast message displaying id.
             if (mCurrentProductUri == null) {
                 Toast.makeText(this, R.string.editor_insert_product_failed, Toast.LENGTH_SHORT).show();
             } else {
@@ -373,7 +385,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             // Extract out the value from the Cursor for the given column index
             String productName = cursor.getString(productNameColumnIndex);
             int productQuantity = cursor.getInt(productQuantityColumnIndex);
-            int productPrice = cursor.getInt(productPriceColumnIndex);
+            String productPriceString = cursor.getString(productPriceColumnIndex);
             String productSupplier = cursor.getString(productSupplierColumnIndex);
             mImageUriString = cursor.getString(productPictureColumnIndex);
             int productSales = cursor.getInt(productSalesColumnIndex);
@@ -381,7 +393,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             // Update the views on the screen with the values from the database
             mProductNameEditText.setText(productName);
             mProductQuantityEditText.setText(Integer.toString(productQuantity));
-            mProductPriceEditText.setText(Integer.toString(productPrice));
+            mProductPriceEditText.setText(productPriceString);
             mProductSupplierEditText.setText(productSupplier);
             Picasso.with(this).load(mImageUriString).placeholder(R.drawable.ic_photo_black_24dp).error(R.drawable.ic_photo_black_24dp).fit().centerInside().into(mProductPictureView);
             mProductSalesEditText.setText(Integer.toString(productSales));
@@ -397,7 +409,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mProductPriceEditText.setText("");
         mProductSupplierEditText.setText("");
         mProductSalesEditText.setText("");
-        //Picasso.with(this).load(R.drawable.ic_photo_black_24dp).into(mProductPictureView);
     }
 
     public void openImageSelector() {
@@ -410,9 +421,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             imageSelector.addCategory(Intent.CATEGORY_OPENABLE);
         }
 
-        //File pictureDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        //String pictureDirectoryPath = pictureDirectory.getPath();
-        //Uri pictureUri = Uri.parse(pictureDirectoryPath);
         imageSelector.setType("image/*");
         startActivityForResult(Intent.createChooser(imageSelector, "Select an image"), PICK_IMAGE_REQUEST);
     }
